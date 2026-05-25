@@ -1,16 +1,29 @@
 # ReadWebsite
 
-Chrome Extension MVP để đọc website và truyện chữ tiếng Việt tự nhiên hơn bằng Google Cloud Text-to-Speech qua backend riêng.
+ReadWebsite is a Chrome extension that reads web pages aloud with natural-sounding voices across languages. It combines a Manifest V3 side-panel experience with a Fastify backend for Google Cloud Text-to-Speech, while keeping `chrome.tts` available as a local fallback.
 
-## Project Layout
+## Key Capabilities
+
+- Read either selected text or the main content of the active page.
+- Present playback controls, progress, and settings in a dedicated Chrome side panel.
+- Synthesize speech through a local Fastify backend backed by Google Cloud TTS.
+- Fall back to `chrome.tts` when the backend is unavailable or not configured.
+- Store settings, reading position, and pronunciation dictionary entries locally.
+
+## Repository Layout
 
 ```text
-apps/extension   Chrome extension frontend: side panel, background, content script, offscreen audio
-apps/api         Backend Fastify: health, voice list, Google TTS synthesis, token/rate-limit/cache
-packages/shared  TypeScript types và helper dùng chung cho cả extension/backend
+apps/extension   Chrome extension runtime: side panel, background worker, content script, offscreen audio
+apps/api         Fastify backend: health check, voice listing, TTS synthesis, token gate, rate limiting, caching
+packages/shared  Shared TypeScript types and text-processing helpers used by the extension and API
 ```
 
-Giữ cấu trúc `apps/extension` và `apps/api` thay vì đổi thành `frontend/backend`, vì extension có nhiều runtime riêng của Chrome chứ không chỉ là một web frontend thông thường.
+The repository intentionally keeps `apps/extension` and `apps/api` separate instead of using a generic `frontend/backend` split, because the extension includes multiple Chrome-specific runtimes beyond a conventional web UI.
+
+## Requirements
+
+- Node.js 20+
+- Chrome 116+
 
 ## Quick Start
 
@@ -18,9 +31,10 @@ Giữ cấu trúc `apps/extension` và `apps/api` thay vì đổi thành `fronte
 npm install
 npm run build
 npm test
+npm run typecheck
 ```
 
-## Development
+## Local Development
 
 ```bash
 cp apps/api/.env.example apps/api/.env
@@ -28,13 +42,13 @@ npm run dev:api
 npm run dev:extension
 ```
 
-Load extension từ `apps/extension/dist` trong `chrome://extensions` sau khi build.
+After building, load the unpacked extension from `apps/extension/dist` in `chrome://extensions`.
 
-MVP hiện ưu tiên đọc được trước bằng `chrome.tts`. Google Cloud TTS đang là tùy chọn thử nghiệm trong phần Cài đặt của extension.
+The current MVP defaults to `chrome.tts` for broad compatibility on regular websites. Google Cloud TTS is available as an opt-in experimental setting in the extension UI.
 
-## Debug
+## Debugging
 
-- Backend: mở `http://127.0.0.1:4317/health` hoặc chạy `Invoke-RestMethod http://127.0.0.1:4317/health`.
-- Extension background: vào `chrome://extensions`, tìm ReadWebsite, bấm `service worker`.
-- Side panel UI: mở side panel, click phải trong panel, chọn `Inspect`.
-- Chrome chặn extension đọc các trang như `chrome://...` và `chromewebstore.google.com`; hãy test trên website thường hoặc bôi đen một đoạn văn bản rồi bấm Đọc.
+- API health: open `http://127.0.0.1:4317/health` or run `Invoke-RestMethod http://127.0.0.1:4317/health`.
+- Extension background worker: open `chrome://extensions`, find ReadWebsite, and inspect the service worker.
+- Side panel UI: open the side panel, right-click inside it, and choose `Inspect`.
+- Restricted pages: Chrome blocks extensions on pages such as `chrome://...` and `chromewebstore.google.com`; test on standard websites instead.

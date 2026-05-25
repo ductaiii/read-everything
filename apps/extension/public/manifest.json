@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ReadWebsite",
-  "description": "Đọc website và truyện chữ tiếng Việt bằng giọng TTS tự nhiên hơn.",
+  "description": "A Chrome extension that reads web pages aloud with natural-sounding voices across languages.",
   "version": "0.1.0",
   "minimum_chrome_version": "116",
   "icons": {
@@ -44,13 +44,13 @@
       "suggested_key": {
         "default": "Alt+R"
       },
-      "description": "Đọc trang hiện tại"
+      "description": "Read the current page"
     },
     "stop-reading": {
       "suggested_key": {
         "default": "Alt+S"
       },
-      "description": "Dừng đọc"
+      "description": "Stop reading"
     }
   }
 }

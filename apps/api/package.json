@@ -1,0 +1,28 @@
+{
+  "name": "@readwebsite/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/server.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "npm run build -w @readwebsite/shared && tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "test": "npm run build -w @readwebsite/shared && vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/helmet": "^13.0.2",
+    "@google-cloud/text-to-speech": "^6.3.0",
+    "@readwebsite/shared": "file:../../packages/shared",
+    "dotenv": "^17.2.3",
+    "fastify": "^5.6.2",
+    "tsx": "^4.20.6",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "vitest": "^4.0.14"
+  }
+}

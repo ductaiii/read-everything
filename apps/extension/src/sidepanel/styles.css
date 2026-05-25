@@ -1,0 +1,207 @@
+:root {
+  color: #202124;
+  background: #f8fafd;
+  font-family: "Segoe UI", "Noto Sans", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 300px;
+  background: #f8fafd;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.header p {
+  display: -webkit-box;
+  margin: 3px 0 0;
+  overflow: hidden;
+  color: #5f6368;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.iconButton,
+.controls button {
+  display: inline-grid;
+  min-width: 36px;
+  min-height: 34px;
+  place-items: center;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #3c4043;
+}
+
+.iconButton:hover,
+.controls button:hover {
+  background: #f1f3f4;
+}
+
+.player,
+.settings,
+.preview {
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 10px;
+}
+
+.statusLine {
+  display: flex;
+  justify-content: space-between;
+  color: #5f6368;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.meter {
+  height: 4px;
+  margin: 8px 0 10px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #e8eaed;
+}
+
+.meter > div {
+  height: 100%;
+  background: #1a73e8;
+  transition: width 160ms ease;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 42px 42px 42px;
+  gap: 8px;
+}
+
+.controls .primaryButton {
+  display: inline-flex;
+  min-width: 0;
+  justify-content: center;
+  gap: 7px;
+  background: #1a73e8;
+  color: #ffffff;
+  font-weight: 650;
+}
+
+.controls .primaryButton:hover {
+  background: #1765cc;
+}
+
+.errorText {
+  margin: 0;
+  border: 1px solid #fad2cf;
+  border-radius: 8px;
+  background: #fce8e6;
+  padding: 9px 10px;
+  color: #a50e0e;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.preview p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: #3c4043;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.settings {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: #3c4043;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 34px;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #202124;
+  padding: 7px 9px;
+}
+
+input[type="range"] {
+  padding: 0;
+  accent-color: #1a73e8;
+}
+
+.toggle {
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  color: #3c4043;
+  line-height: 1.35;
+}
+
+.toggle input {
+  min-height: auto;
+  accent-color: #1a73e8;
+}
+
+.advanced {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid #e8eaed;
+  padding-top: 10px;
+}

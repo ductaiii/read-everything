@@ -1,0 +1,26 @@
+{
+  "name": "readwebsite",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @readwebsite/shared && npm run build -w @readwebsite/api && npm run build -w @readwebsite/extension",
+    "dev": "npm run dev -w @readwebsite/api",
+    "dev:api": "npm run dev -w @readwebsite/api",
+    "dev:extension": "npm run dev -w @readwebsite/extension",
+    "test": "npm run test -w @readwebsite/shared && npm run test -w @readwebsite/api && npm run test -w @readwebsite/extension",
+    "typecheck": "npm run typecheck -w @readwebsite/shared && npm run typecheck -w @readwebsite/api && npm run typecheck -w @readwebsite/extension"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.14"
+  }
+}

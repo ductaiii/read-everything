@@ -1,0 +1,30 @@
+{
+  "name": "@readwebsite/extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build && esbuild src/contentScript.ts --bundle --format=iife --target=chrome116 --outfile=dist/contentScript.js",
+    "dev": "vite build --watch",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "@readwebsite/shared": "file:../../packages/shared",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.34",
+    "@types/mozilla-readability": "^0.2.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "esbuild": "^0.27.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.14",
+    "vitest": "^4.0.14"
+  }
+}

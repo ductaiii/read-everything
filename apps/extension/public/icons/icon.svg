@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="ReadWebsite icon">
+  <rect width="128" height="128" rx="28" fill="#1a73e8"/>
+  <path d="M29 38c0-4 3-7 7-7h24c7 0 13 3 17 8 4-5 10-8 17-8h10c4 0 7 3 7 7v53c0 4-3 7-7 7H91c-7 0-13 3-17 8-4-5-10-8-17-8H36c-4 0-7-3-7-7V38Z" fill="#ffffff"/>
+  <path d="M39 43h17c7 0 13 5 13 12v37c-4-3-9-5-14-5H39V43Zm50 0h12v44H89c-5 0-10 2-14 5V55c0-7 6-12 14-12Z" fill="#dff0ff"/>
+  <path d="M47 55h14M47 66h14M47 77h12" stroke="#1a73e8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M88 56c5 4 8 10 8 17s-3 13-8 17" fill="none" stroke="#1a73e8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M97 47c8 7 13 16 13 26s-5 19-13 26" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity=".95"/>
+</svg>

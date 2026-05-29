@@ -4,7 +4,7 @@ let audio: HTMLAudioElement | undefined;
 
 chrome.runtime.onMessage.addListener((message: ExtensionMessage) => {
   if (message.type === "PLAY_AUDIO") {
-    playAudio(message.audioContent, message.contentType).catch((error: unknown) => {
+    playAudio(message.audioContent, message.contentType, message.volume).catch((error: unknown) => {
       chrome.runtime.sendMessage({
         type: "AUDIO_ERROR",
         error: error instanceof Error ? error.message : String(error)
@@ -17,10 +17,11 @@ chrome.runtime.onMessage.addListener((message: ExtensionMessage) => {
   }
 });
 
-async function playAudio(audioContent: string, contentType: string): Promise<void> {
+async function playAudio(audioContent: string, contentType: string, volume: number): Promise<void> {
   stopAudio();
   const source = `data:${contentType};base64,${audioContent}`;
   audio = new Audio(source);
+  audio.volume = Math.max(0, Math.min(1, volume));
   audio.onended = () => {
     chrome.runtime.sendMessage({ type: "AUDIO_ENDED" } satisfies ExtensionMessage);
   };

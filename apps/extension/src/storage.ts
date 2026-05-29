@@ -5,6 +5,7 @@ export const DEFAULT_SETTINGS: ReaderSettings = {
   devToken: "dev-local-token",
   voice: "vi-VN-Chirp3-HD-Aoede",
   rate: 1,
+  volume: 1,
   pitch: 0,
   highlight: true,
   useCloudVoice: false,

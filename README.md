@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="apps/extension/public/icons/icon.svg" alt="ReadWebsite logo" width="96" height="96" />
+  <img src="apps/extension/public/icons/icon-128.png" alt="ReadWebsite logo" width="96" height="96" />
 </p>
 
 <h1 align="center">ReadWebsite</h1>
@@ -16,23 +16,27 @@
 
 ## Overview
 
-ReadWebsite is an MVP Chrome extension for turning web pages into speech. It focuses first on reliable reading with the browser's built-in `chrome.tts`, then keeps Google Cloud Text-to-Speech available as an optional upgrade path for more natural voices.
+ReadWebsite is an MVP Chrome extension for turning web pages into speech. It focuses first on reliable background reading with the browser's built-in `chrome.tts`, then keeps Google Cloud Text-to-Speech available as an optional upgrade path for more natural voices.
 
-The extension uses a clean side-panel player, page text extraction, reading progress, local settings, and a small Fastify backend for future cloud TTS experiments.
+The extension uses a compact toolbar popup by default, with an optional side-panel player for longer sessions. Reading state is owned by the background service worker, so playback can continue after the popup is closed.
 
 ## Features
 
 - Read selected text or the main content of the active page.
-- Use a minimal Chrome side panel with play, pause, stop, refresh, and settings.
+- Use a compact popup with play, pause, stop, refresh, settings, and progress.
+- Keep reading in the background after the popup is closed.
+- Optionally open the side-panel player from the popup.
+- Highlight the word currently being spoken and scroll the page as reading advances.
+- Configure speed, volume, highlighting, and cloud TTS from a separate settings screen.
 - Default to `chrome.tts` so the extension can be tested without a backend.
 - Optionally enable Google Cloud TTS through the local Fastify API.
 - Store reading position and preferences in Chrome local storage.
-- Extract readable page content with `@mozilla/readability`.
+- Extract readable page content with site handlers and `@mozilla/readability`.
 
 ## Project Structure
 
 ```text
-apps/extension    Chrome extension: side panel, background worker, content script, offscreen audio
+apps/extension    Chrome extension: popup, optional side panel, background reader, content script, offscreen audio
 apps/api          Fastify API: health check, voices, TTS synthesis, token gate, rate limit, cache
 packages/shared   Shared TypeScript types, text preprocessing, chunking, cache helpers
 ```
@@ -69,6 +73,15 @@ apps/extension/dist
 
 After every rebuild, click reload on the extension card in `chrome://extensions`.
 
+## Use The Extension
+
+1. Open a normal website page.
+2. Click the ReadWebsite toolbar icon.
+3. Click `Đọc` to start reading.
+4. Close the popup if you want; playback continues in the background.
+5. Open the popup again to pause, resume, stop, refresh, or change settings.
+6. Use the side-panel button in the popup when you want a persistent vertical player.
+
 ## Optional Backend
 
 The backend is only needed for Google Cloud TTS mode.
@@ -103,7 +116,8 @@ npm run typecheck      # Type-check all workspaces
 ## Debugging
 
 - Extension background: open `chrome://extensions`, find ReadWebsite, then inspect the service worker.
-- Side panel UI: open the side panel, right-click inside it, then choose `Inspect`.
+- Popup UI: right-click inside the popup, then choose `Inspect`.
+- Side panel UI: open the side panel from the popup, right-click inside it, then choose `Inspect`.
 - API: check `http://127.0.0.1:4317/health`.
 - Restricted pages: Chrome blocks extensions on `chrome://...` and `chromewebstore.google.com`, so test on regular websites.
 

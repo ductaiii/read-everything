@@ -19,6 +19,13 @@ body {
   line-height: 1.45;
 }
 
+body.popupMode {
+  width: 400px;
+  min-width: 400px;
+  max-height: 600px;
+  overflow: auto;
+}
+
 button,
 input,
 select {
@@ -48,6 +55,12 @@ button:disabled {
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
+}
+
+.headerActions {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 6px;
 }
 
 .header h1 {
@@ -118,18 +131,13 @@ button:disabled {
 
 .controls {
   display: grid;
-  grid-template-columns: 1fr 42px 42px 42px;
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .controls .primaryButton {
-  display: inline-flex;
-  min-width: 0;
-  justify-content: center;
-  gap: 7px;
   background: #1a73e8;
   color: #ffffff;
-  font-weight: 650;
 }
 
 .controls .primaryButton:hover {
@@ -185,6 +193,18 @@ select {
 input[type="range"] {
   padding: 0;
   accent-color: #1a73e8;
+}
+
+.saveButton {
+  min-height: 38px;
+  border-radius: 6px;
+  background: #1a73e8;
+  color: #ffffff;
+  font-weight: 650;
+}
+
+.saveButton:hover {
+  background: #1765cc;
 }
 
 .toggle {

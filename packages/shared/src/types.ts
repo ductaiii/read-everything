@@ -14,6 +14,7 @@ export interface ReaderSettings {
   devToken: string;
   voice: string;
   rate: number;
+  volume: number;
   pitch: number;
   highlight: boolean;
   useCloudVoice: boolean;

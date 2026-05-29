@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build && esbuild src/contentScript.ts --bundle --format=iife --target=chrome116 --outfile=dist/contentScript.js",
+    "build": "vite build",
     "dev": "vite build --watch",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
